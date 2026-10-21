@@ -21,6 +21,15 @@ Regras complementares:
 
 ## Sobre o projeto
 
+- Jogo **Dulu**: ludo ao contrário para 2 a 8 jogadores, com duelos de charadas.
 - Site estático publicado via GitHub Pages a partir da branch `main` (raiz).
-- Arquivo principal: `index.html`.
 - URL do site: https://larandreluizinfo.github.io/dulu/
+- Sem build e sem dependências. Arquivos:
+  - `index.html` — estrutura do jogo (tela de configuração, tabuleiro, painel e modais).
+  - `css/styles.css` — estilos do tabuleiro, painel, modais e responsividade.
+  - `js/charadas.js` — banco de charadas (`{ p, o, c }`, opções e índice da correta).
+  - `js/game.js` — estado, turnos, movimento, encontros, charadas e vitória.
+- Regras principais: trilha de 40 casas no sentido anti-horário; ao parar na casa de
+  outro pininho ou passar por cima dele, os dois respondem uma charada (acertou passa,
+  errou volta 5 casas); vence quem alcançar a meta.
+- `AGENTS.md`, `README.md` e `index.html` são os arquivos de referência do projeto.

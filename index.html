@@ -3,80 +3,124 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dulu</title>
-  <style>
-    :root {
-      color-scheme: light dark;
-      --bg: #0e1116;
-      --fg: #e6edf3;
-      --muted: #8b949e;
-      --accent: #58a6ff;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 2rem;
-      background: radial-gradient(circle at 50% 0%, #1b2636 0%, var(--bg) 60%);
-      color: var(--fg);
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    }
-    main {
-      max-width: 640px;
-      text-align: center;
-    }
-    h1 {
-      margin: 0 0 .5rem;
-      font-size: clamp(2.5rem, 8vw, 4rem);
-      letter-spacing: -.03em;
-    }
-    p.lead {
-      margin: 0 0 2rem;
-      color: var(--muted);
-      font-size: 1.125rem;
-    }
-    ul {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-      justify-content: center;
-    }
-    li {
-      padding: .4rem .85rem;
-      border: 1px solid #30363d;
-      border-radius: 999px;
-      font-size: .9rem;
-    }
-    a { color: var(--accent); }
-    footer {
-      margin-top: 3rem;
-      font-size: .85rem;
-      color: var(--muted);
-    }
-  </style>
+  <title>Dulu — ludo ao contrário</title>
+  <meta name="description" content="Dulu é um ludo ao contrário para até 8 jogadores: os pininhos voltam para o início e, ao se cruzarem, disputam charadas." />
+  <meta name="theme-color" content="#0a0e14" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◆</text></svg>" />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <main>
-    <h1>Dulu</h1>
-    <p class="lead">Projeto do time. Em construção.</p>
-    <h2>Autores</h2>
-    <ul>
-      <li>Miguel</li>
-      <li>Luiz</li>
-      <li>Pietra</li>
-      <li>Davi</li>
-      <li>Yasmin</li>
-      <li>Ana</li>
-      <li>Filipe</li>
-    </ul>
-    <footer>
-      <a href="https://github.com/larandreluizinfo/dulu">Ver no GitHub</a>
+  <div class="app">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Dulu, página inicial">
+        <span class="brand-mark" aria-hidden="true">◆</span>
+        <span class="brand-name">Dulu</span>
+        <span class="brand-tag">ludo ao contrário</span>
+      </a>
+      <nav class="topnav">
+        <button class="btn ghost" id="btn-help" type="button">Como jogar</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="setup card" id="setup">
+        <h2>Monte a mesa</h2>
+        <p class="muted">De 2 a 8 pininhos, todos no mesmo aparelho. Cada um larga no fim da trilha e corre no sentido contrário até o início.</p>
+        <ul class="setup-list" id="setup-list"></ul>
+        <div class="setup-actions">
+          <button class="btn primary" id="btn-start" type="button">Começar partida</button>
+          <span class="hint" id="setup-hint">7 pininhos na mesa</span>
+        </div>
+      </section>
+
+      <section class="game hidden" id="game">
+        <div class="board-area">
+          <div class="board" id="board">
+            <div class="board-ring" aria-hidden="true"></div>
+            <div class="board-center">
+              <span class="center-title">Dulu</span>
+              <span class="center-sub">sentido contrário</span>
+              <span class="center-arrow" aria-hidden="true">↺</span>
+            </div>
+          </div>
+          <p class="board-note">↺ percurso no sentido contrário · largada na casa 1 · meta na casa 40</p>
+        </div>
+
+        <aside class="side">
+          <div class="card turn">
+            <span class="eyebrow">Vez de</span>
+            <div class="turn-name" id="turn-name">—</div>
+            <p class="turn-hint" id="turn-hint">Role o dado para andar no sentido contrário.</p>
+            <button class="btn primary wide" id="btn-roll" type="button">Rolar dado</button>
+          </div>
+
+          <div class="card dice-card">
+            <div class="dice" id="dice" role="img" aria-label="Dado"></div>
+          </div>
+
+          <div class="card">
+            <h3>Pininhos</h3>
+            <ol class="players" id="players-list"></ol>
+          </div>
+
+          <div class="card log-card">
+            <h3>Diário</h3>
+            <ol class="log" id="log" aria-live="polite"></ol>
+          </div>
+
+          <button class="btn ghost wide" id="btn-new" type="button">Nova partida</button>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Autores:</span>
+      <strong>Miguel · Luiz · Pietra · Davi · Yasmin · Ana · Filipe</strong>
     </footer>
-  </main>
+  </div>
+
+  <dialog class="modal" id="riddle-dialog">
+    <div class="modal-inner">
+      <div class="modal-head">
+        <span class="riddle-who" id="riddle-who">—</span>
+        <span class="riddle-kind" id="riddle-kind">charada de encontro</span>
+      </div>
+      <p class="riddle-q" id="riddle-q"></p>
+      <div class="timer"><div class="timer-bar" id="timer-bar"></div></div>
+      <div class="options" id="riddle-options"></div>
+      <p class="riddle-feedback" id="riddle-feedback" aria-live="assertive"></p>
+    </div>
+  </dialog>
+
+  <dialog class="modal" id="help-dialog">
+    <div class="modal-inner">
+      <div class="modal-head">
+        <h2>Como jogar</h2>
+        <span class="riddle-kind">dulu</span>
+      </div>
+      <ol class="rules">
+        <li><strong>Ludo ao contrário:</strong> cada pininho começa na casa 1, no fim da trilha, e corre no sentido anti-horário até a meta (casa 40).</li>
+        <li><strong>2 a 8 jogadores</strong> no mesmo aparelho. Role o dado (1 a 6) na sua vez.</li>
+        <li><strong>Encontro:</strong> se um pininho parar na casa de outro — ou passar por cima dele — os dois disputam uma charada.</li>
+        <li><strong>Charada:</strong> quem provocou o encontro responde primeiro, depois o outro. Acertou, passa e fica na casa. Errou, volta 5 casas.</li>
+        <li><strong>Vitória:</strong> quem alcançar ou ultrapassar a casa 40 primeiro vence o Dulu.</li>
+      </ol>
+      <p class="muted">Atalho: barra de espaço rola o dado.</p>
+      <button class="btn primary wide" id="btn-help-close" type="button">Entendi</button>
+    </div>
+  </dialog>
+
+  <dialog class="modal" id="win-dialog">
+    <div class="modal-inner win">
+      <div class="win-trophy" aria-hidden="true">★</div>
+      <span class="eyebrow">chegou na meta</span>
+      <h2 id="win-name">—</h2>
+      <p class="muted" id="win-msg"></p>
+      <button class="btn primary wide" id="btn-win-new" type="button">Jogar de novo</button>
+    </div>
+  </dialog>
+
+  <script src="js/charadas.js"></script>
+  <script src="js/game.js"></script>
 </body>
 </html>

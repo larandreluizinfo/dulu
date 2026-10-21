@@ -1,0 +1,60 @@
+/* Banco de charadas do Dulu.
+   Cada item: p = pergunta, o = opções, c = índice da resposta certa.
+   As opções são embaralhadas antes de aparecer no jogo. */
+
+window.CHARADAS = [
+  { p: "Tem dentes, mas não morde. O que é?", o: ["Pente", "Garfo", "Tesoura", "Escova"], c: 0 },
+  { p: "Tem chaves, mas não abre portas. O que é?", o: ["Piano", "Cadeado", "Portão", "Gaveta"], c: 0 },
+  { p: "Quanto mais se tira, maior fica. O que é?", o: ["Buraco", "Bolo", "Muro", "Sombra"], c: 0 },
+  { p: "Nasce grande e morre pequeno. O que é?", o: ["Lápis", "Árvore", "Nuvem", "Vela"], c: 0 },
+  { p: "Tem pescoço, mas não tem cabeça. O que é?", o: ["Garrafa", "Camisa", "Girafa", "Violão"], c: 0 },
+  { p: "Tem olhos, mas não vê. O que é?", o: ["Agulha", "Coruja", "Janela", "Câmera"], c: 0 },
+  { p: "Qual letra está no meio da palavra “ovo”?", o: ["V", "O", "A", "E"], c: 0 },
+  { p: "Tem boca, mas não fala, e corre sem parar. O que é?", o: ["O rio", "A panela", "O microfone", "A caverna"], c: 0 },
+  { p: "Quanto mais lava, mais sujo fica. O que é?", o: ["Água", "Sabão", "Esponja", "Toalha"], c: 0 },
+  { p: "Sobe e nunca desce. O que é?", o: ["A idade", "O elevador", "A fumaça", "O balão"], c: 0 },
+  { p: "Tem rosto e duas mãos, mas não tem braços. O que é?", o: ["Relógio", "Boneco", "Retrato", "Espelho"], c: 0 },
+  { p: "Fica cheio durante o dia e vazio à noite. O que é?", o: ["O sapato", "A geladeira", "A panela", "A mochila"], c: 0 },
+  { p: "Tem quatro pernas e não anda. O que é?", o: ["Mesa", "Cavalo", "Formiga", "Gato"], c: 0 },
+  { p: "Tem asas, mas não voa. O que é?", o: ["Ventilador", "Pardal", "Avião", "Borboleta"], c: 0 },
+  { p: "Quanto mais se tem, menos se vê. O que é?", o: ["Escuridão", "Luz", "Dinheiro", "Altura"], c: 0 },
+  { p: "Tem cidades, mas não tem casas; tem rios, mas não tem água. O que é?", o: ["Mapa", "Planeta", "Livro", "Sonho"], c: 0 },
+  { p: "Fica molhada enquanto seca. O que é?", o: ["Toalha", "Sombra", "Vassoura", "Colher"], c: 0 },
+  { p: "Tem bico, mas não bica. O que é?", o: ["Bule", "Galinha", "Pardal", "Tucano"], c: 0 },
+  { p: "Tem dentes e corta. O que é?", o: ["Serra", "Pente", "Garfo", "Colher"], c: 0 },
+  { p: "É seu, mas os outros usam mais do que você. O que é?", o: ["Seu nome", "Seu sapato", "Sua voz", "Sua casa"], c: 0 },
+  { p: "Não tem princípio nem fim. O que é?", o: ["O círculo", "A reta", "O quadrado", "O triângulo"], c: 0 },
+  { p: "Tem 24 horas e sempre acaba. O que é?", o: ["O dia", "O mês", "A hora", "A semana"], c: 0 },
+  { p: "Tem 12 filhos, e cada filho tem cerca de 30 netos. O que é?", o: ["O ano", "O mês", "A semana", "O relógio"], c: 0 },
+  { p: "Atravessa o rio sem se molhar. O que é?", o: ["A ponte", "O peixe", "O remo", "A chuva"], c: 0 },
+  { p: "Tem escamas, mas não é peixe. O que é?", o: ["Cobra", "Gato", "Pato", "Sapo"], c: 0 },
+  { p: "Tem barba, mas não é homem. O que é?", o: ["Milho", "Gato", "Pato", "Sapo"], c: 0 },
+  { p: "Fala sem ter boca. O que é?", o: ["O eco", "A pedra", "A nuvem", "O lápis"], c: 0 }
+];
+
+window.CHARADAS = window.CHARADAS.concat([
+  { p: "Tem cinco dedos, mas não tem osso. O que é?", o: ["Luva", "Mão", "Pé", "Garra"], c: 0 },
+  { p: "É cheia de buracos e ainda segura água. O que é?", o: ["Esponja", "Peneira", "Cesta", "Rede"], c: 0 },
+  { p: "Cai sempre em pé. O que é?", o: ["O gato", "A moeda", "A colher", "A pedra"], c: 0 },
+  { p: "Qual é o mês que tem 28 dias?", o: ["Todos os meses", "Fevereiro", "Nenhum", "Só os meses pares"], c: 0 },
+  { p: "Tem um só olho e não vê. O que é?", o: ["O furacão", "A agulha", "O ciclope", "A câmera"], c: 0 },
+  { p: "Tem muitas folhas e não é árvore. O que é?", o: ["O livro", "A pedra", "O copo", "A nuvem"], c: 0 },
+  { p: "Sobe a serra sem sair do lugar. O que é?", o: ["A estrada", "O carro", "O rio", "O vento"], c: 0 },
+  { p: "Tem cauda, mas não é bicho. O que é?", o: ["O cometa", "A pedra", "A nuvem", "O sol"], c: 0 },
+  { p: "Quanto mais você anda, mais deixa atrás. O que é?", o: ["As pegadas", "A sombra", "O vento", "O caminho"], c: 0 },
+  { p: "Tem duas rodas e não tem motor. O que é?", o: ["A bicicleta", "O carro", "O caminhão", "O trem"], c: 0 },
+  { p: "É pequena, redonda e faz todo mundo chorar. O que é?", o: ["A cebola", "A batata", "A uva", "O tomate"], c: 0 },
+  { p: "Todo mundo tem, mas ninguém consegue perder. O que é?", o: ["A sombra", "O nome", "A paciência", "A pressa"], c: 0 },
+  { p: "Pode ser quebrada sem nunca ter sido tocada. O que é?", o: ["Uma promessa", "Uma pedra", "Uma janela", "Um copo"], c: 0 },
+  { p: "Sobe quando a chuva desce. O que é?", o: ["O guarda-chuva", "O rio", "O telhado", "O sapo"], c: 0 },
+  { p: "Precisa ser quebrado antes de ser usado. O que é?", o: ["O ovo", "O lápis", "O vidro", "O pão"], c: 0 },
+  { p: "Anda em círculos e nunca sai do lugar. O que é?", o: ["O relógio", "O carro", "O rio", "O trem"], c: 0 },
+  { p: "Sempre vem, mas nunca chega. O que é?", o: ["O amanhã", "O carteiro", "O trem", "A chuva"], c: 0 },
+  { p: "Aparece à noite e muda de forma. O que é?", o: ["A lua", "O sol", "A nuvem", "O morcego"], c: 0 },
+  { p: "Quantos meses do ano têm 31 dias?", o: ["7", "5", "6", "8"], c: 0 },
+  { p: "O que pesa mais: um quilo de penas ou um quilo de chumbo?", o: ["Pesam o mesmo", "As penas", "O chumbo", "Depende do dia"], c: 0 },
+  { p: "Um tijolo pesa 1 kg mais meio tijolo. Quanto pesa o tijolo?", o: ["2 kg", "1,5 kg", "1 kg", "3 kg"], c: 0 },
+  { p: "Quantos animais de cada espécie Moisés levou na arca?", o: ["Nenhum: a arca era de Noé", "Dois", "Sete", "Depende do tamanho"], c: 0 },
+  { p: "No Dulu, o que acontece com o pininho que erra a charada?", o: ["Volta 5 casas", "Volta 3 casas", "Perde a vez", "Volta para a largada"], c: 0 },
+  { p: "Quantas casas tem a trilha do Dulu?", o: ["40", "30", "52", "24"], c: 0 }
+]);
