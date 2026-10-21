@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dulu</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #0e1116;
+      --fg: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+      background: radial-gradient(circle at 50% 0%, #1b2636 0%, var(--bg) 60%);
+      color: var(--fg);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    main {
+      max-width: 640px;
+      text-align: center;
+    }
+    h1 {
+      margin: 0 0 .5rem;
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      letter-spacing: -.03em;
+    }
+    p.lead {
+      margin: 0 0 2rem;
+      color: var(--muted);
+      font-size: 1.125rem;
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      justify-content: center;
+    }
+    li {
+      padding: .4rem .85rem;
+      border: 1px solid #30363d;
+      border-radius: 999px;
+      font-size: .9rem;
+    }
+    a { color: var(--accent); }
+    footer {
+      margin-top: 3rem;
+      font-size: .85rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Dulu</h1>
+    <p class="lead">Projeto do time. Em construção.</p>
+    <h2>Autores</h2>
+    <ul>
+      <li>Miguel</li>
+      <li>Luiz</li>
+      <li>Pietra</li>
+      <li>Davi</li>
+      <li>Yasmin</li>
+      <li>Ana</li>
+      <li>Filipe</li>
+    </ul>
+    <footer>
+      <a href="https://github.com/larandreluizinfo/dulu">Ver no GitHub</a>
+    </footer>
+  </main>
+</body>
+</html>
