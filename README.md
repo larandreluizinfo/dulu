@@ -7,6 +7,7 @@
 ## Como jogar
 
 - **2 a 8 jogadores**, todos no mesmo aparelho.
+- Cada jogador é um animal: **Panda, Coelho, Onça, Cavalo, Macaco, Borboleta** (e, para mesas maiores, Tigre e Coruja). O nome pode ser trocado na montagem da mesa.
 - Cada pininho larga na **casa 1** e percorre as **40 casas** no sentido anti-horário até a **meta**.
 - Na sua vez, role o dado (1 a 6) e avance. Quem alcançar ou ultrapassar a casa 40 primeiro vence.
 - **Encontro:** se um pininho parar na casa de outro — ou passar por cima dele — os dois disputam uma charada.

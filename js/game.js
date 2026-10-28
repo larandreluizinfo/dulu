@@ -5,8 +5,16 @@
 (function () {
   "use strict";
 
-  var CORES = ["#f0616d", "#5aa9f0", "#54d18a", "#f5b544", "#b57bf0", "#f28b3c", "#4fd6d0", "#ef7bb0"];
-  var NOMES = ["Miguel", "Luiz", "Pietra", "Davi", "Yasmin", "Ana", "Filipe", "Jogador 8"];
+  var PININHOS = [
+    { nome: "Panda", emoji: "🐼", cor: "#f0616d" },
+    { nome: "Coelho", emoji: "🐰", cor: "#5aa9f0" },
+    { nome: "Onça", emoji: "🐆", cor: "#54d18a" },
+    { nome: "Cavalo", emoji: "🐴", cor: "#f5b544" },
+    { nome: "Macaco", emoji: "🐵", cor: "#b57bf0" },
+    { nome: "Borboleta", emoji: "🦋", cor: "#f28b3c" },
+    { nome: "Tigre", emoji: "🐯", cor: "#4fd6d0" },
+    { nome: "Coruja", emoji: "🦉", cor: "#ef7bb0" }
+  ];
   var CASAS = 40;
   var ULTIMA = CASAS - 1;
   var MIN = 2;
@@ -129,10 +137,6 @@
     return res;
   }
 
-  function inicial(nome) {
-    return String(nome).trim().slice(0, 1).toUpperCase() || "?";
-  }
-
   function renderJogadores() {
     var lista = $("players-list");
     lista.innerHTML = "";
@@ -140,7 +144,7 @@
       var li = document.createElement("li");
       li.className = "player" + (i === state.atual && !state.fim ? " is-turn" : "");
       li.innerHTML =
-        '<span class="chip" style="--c:' + p.cor + '">' + esc(inicial(p.nome)) + "</span>" +
+        '<span class="chip" style="--c:' + p.cor + '">' + esc(p.emoji) + "</span>" +
         '<span class="pname">' + esc(p.nome) + "</span>" +
         '<span class="ppos">casa ' + (p.pos + 1) + "/" + CASAS + "</span>";
       lista.appendChild(li);
@@ -151,7 +155,7 @@
     var p = state.players[state.atual];
     if (!p) return;
     var nome = $("turn-name");
-    nome.textContent = p.nome;
+    nome.textContent = p.emoji + " " + p.nome;
     nome.style.setProperty("--c", p.cor);
     $("turn-hint").textContent = p.nome + ", role o dado e avance no sentido contrário.";
   }
@@ -202,15 +206,16 @@
 
   function montarConfiguracao() {
     var lista = $("setup-list");
-    NOMES.forEach(function (nome, i) {
+    PININHOS.forEach(function (p, i) {
       var li = document.createElement("li");
       li.className = "setup-row";
       li.innerHTML =
         '<label class="check">' +
-        '<input type="checkbox" data-idx="' + i + '"' + (i < 7 ? " checked" : "") + ">" +
-        '<span class="swatch" style="--c:' + CORES[i] + '"></span>' +
+        '<input type="checkbox" data-idx="' + i + '"' + (i < 6 ? " checked" : "") + ">" +
+        '<span class="swatch" style="--c:' + p.cor + '"></span>' +
         "</label>" +
-        '<input class="name-input" type="text" maxlength="14" value="' + esc(nome) + '" data-idx="' + i + '" aria-label="Nome do jogador ' + (i + 1) + '">' +
+        '<span class="setup-emoji" aria-hidden="true">' + p.emoji + "</span>" +
+        '<input class="name-input" type="text" maxlength="14" value="' + esc(p.nome) + '" data-idx="' + i + '" aria-label="Nome do pininho ' + (i + 1) + '">' +
         '<span class="pos-num">' + (i + 1) + "º</span>";
       lista.appendChild(li);
     });
@@ -236,7 +241,7 @@
       if (!c.checked || escolhidos.length >= MAX) return;
       var idx = Number(c.dataset.idx);
       var input = document.querySelector('.name-input[data-idx="' + idx + '"]');
-      var nome = (input && input.value ? input.value : "").trim().slice(0, 14) || NOMES[idx];
+      var nome = (input && input.value ? input.value : "").trim().slice(0, 14) || PININHOS[idx].nome;
       escolhidos.push({ idx: idx, nome: nome });
     });
     if (escolhidos.length < MIN) return;
@@ -245,13 +250,19 @@
     board.querySelectorAll(".pin").forEach(function (el) { el.remove(); });
 
     state.players = escolhidos.map(function (o) {
-      return { nome: o.nome, cor: CORES[o.idx], pos: 0, el: null };
+      return {
+        nome: o.nome,
+        emoji: PININHOS[o.idx].emoji,
+        cor: PININHOS[o.idx].cor,
+        pos: 0,
+        el: null
+      };
     });
 
     state.players.forEach(function (p) {
       var el = document.createElement("div");
       el.className = "pin";
-      el.textContent = inicial(p.nome);
+      el.textContent = p.emoji;
       el.title = p.nome;
       el.style.setProperty("--c", p.cor);
       board.appendChild(el);

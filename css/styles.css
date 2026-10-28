@@ -186,7 +186,7 @@ body {
 
 .setup-row {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-columns: auto auto minmax(0, 1fr) auto;
   align-items: center;
   gap: 12px;
   padding: 8px 12px;
@@ -221,6 +221,11 @@ body {
   border-radius: 50%;
   background: var(--c);
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.06);
+}
+
+.setup-emoji {
+  font-size: 20px;
+  line-height: 1;
 }
 
 .name-input {
@@ -380,7 +385,7 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.5);
   background: var(--c);
   color: #0a0e14;
-  font-size: clamp(6px, 1.2cqw, 10px);
+  font-size: clamp(7px, 1.7cqw, 14px);
   font-weight: 800;
   line-height: 1;
   box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.22), 0 3px 8px rgba(0, 0, 0, 0.5);
@@ -396,7 +401,7 @@ body {
 .pin.is-compact {
   width: 2.5%;
   height: 2.5%;
-  font-size: clamp(5px, 1cqw, 8px);
+  font-size: clamp(6px, 1.4cqw, 11px);
 }
 
 .board-note {
@@ -526,7 +531,7 @@ body {
   border-radius: 50%;
   background: var(--c);
   color: #0a0e14;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 800;
 }
 
