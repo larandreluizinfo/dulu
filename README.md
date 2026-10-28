@@ -4,6 +4,8 @@
 
 🎲 Jogue em: **https://larandreluizinfo.github.io/dulu/**
 
+Atalho: para cair direto na partida, use **?jogar** no endereço (ou `?jogar=4` para começar com 4 pininhos).
+
 ## Como jogar
 
 - **2 a 8 jogadores**, todos no mesmo aparelho.

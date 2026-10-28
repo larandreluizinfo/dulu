@@ -556,9 +556,27 @@
 
   /* ---------- início ---------- */
 
+  /* Atalho: index.html?jogar começa a partida direto com os pininhos marcados.
+     index.html?jogar=4 começa com os 4 primeiros. */
+  function iniciarPelaURL() {
+    var params = new URLSearchParams(window.location.search);
+    if (!params.has("jogar")) return;
+
+    var n = parseInt(params.get("jogar"), 10);
+    if (n >= MIN) {
+      var total = Math.min(n, MAX);
+      document.querySelectorAll("#setup-list input[type=checkbox]").forEach(function (c) {
+        c.checked = Number(c.dataset.idx) < total;
+      });
+      atualizarDica();
+    }
+    iniciarPartida();
+  }
+
   montarTabuleiro();
   montarConfiguracao();
   renderDado(0);
   renderJogadores();
+  iniciarPelaURL();
 })();
 
